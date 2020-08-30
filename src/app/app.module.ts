@@ -7,7 +7,6 @@ import { TropogoCourseDetailsComponent } from './tropogo-course-details/tropogo-
 import { TropogoTrainingDetailsComponent } from './tropogo-training-details/tropogo-training-details.component';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -20,8 +19,7 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-    AngularMultiSelectModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
