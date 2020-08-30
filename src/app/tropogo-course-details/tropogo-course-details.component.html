@@ -1,0 +1,130 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup]="addCourseDetails" (ngSubmit)="onSubmit()">
+                <div style="padding: 20px 0px;">
+                    <h5 style="font-weight: bold;">COURSE 1</h5>
+                </div>
+                <div class="form-group" style="font-size: 12px;">
+                    <label for="courseName"><strong>Course Name</strong></label>
+                    <input type="text" class="form-control" id="courseName" placeholder="Add Course name."
+                        formControlName="courseTitle">
+                </div>
+                <div class="form-group" style="font-size: 12px;margin-bottom: 30px;">
+                    <label for="courseName"><strong>Aircraft Type</strong></label>
+                    <br>
+                    <div class="form-check-inline">
+                        <label class="form-check-label" for="radio1">
+                            <input type="radio" class="form-check-input" id="radio1" name="airCraftType"
+                                value="MultiRotor" formControlName="airCraftType">Multi
+                            Rotar
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label" for="radio2">
+                            <input type="radio" class="form-check-input" id="radio2" name="airCraftType" value="Fixed"
+                                formControlName="airCraftType">Fixed
+                            Wing
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" style="font-size: 12px;" formArrayName="batchDetails">
+                    <div *ngFor="let item of batchDetails().controls; let i = index" [formGroupName]="i" style="border-bottom: 1px solid;
+                        margin-bottom: 10px;
+                        padding-bottom: 15px;">
+                        <div class="row">
+                            <p class="col-md-3"><strong>BATCH</strong></p>
+                            <p class="col-md-3"><strong>START DATE</strong></p>
+                            <p class="col-md-3"><strong>END DATE</strong></p>
+                        </div>
+                        <div class="row" style="padding: 20px 0px 0px 0px;background: lightgray;">
+                            <p class="col-md-3"><strong>BATCH 1</strong></p>
+                            <p class="col-md-3">
+                                <img src="../../assets/images/ic_datepicker.png" alt=""><span id="courseStartDate">DD MM
+                                    YY</span></p>
+                            <p class="col-md-3">
+                                <img src="../../assets/images/ic_datepicker.png" alt=""><span id="courseEndDate">DD MM
+                                    YY</span></p>
+                            <p class="col-md-3">
+                                <img src="../../assets/images/ic_chevronexpand.png" alt=""
+                                    style="float: right;margin-left: 20px;">
+                                <img src="../../assets/images/ic_moreoptions.png" alt="" style="float: right;">
+                            </p>
+                            <div class="form-group offset-md-3 col-md-6" style="font-size: 12px;">
+                                <label for="courseName"><strong>Course Name</strong></label>
+                                <select class="form-control" id="customSelctor" formControlName="courseLocation">
+                                    <option *ngFor="let item of coursesLocationList">{{ item }}</option>
+                                    <option value="">--SELECT--</option>
+                                </select>
+                            </div>
+                            <div class="form-group offset-md-3 col-md-6" style="font-size: 12px;">
+                                <label for="courseLanguage"><strong>Course Language</strong></label>
+                                <select class="form-control" id="customSelctor" formControlName="courseLanguage">
+                                    <option *ngFor="let item of coursesLanguageList">{{ item }}</option>
+                                    <option value="">--SELECT--</option>
+                                </select>
+                            </div>
+                            <div class="form-group offset-md-3 col-md-6" style="font-size: 12px;">
+                                <label for="courseCost"><strong>Course Cost</strong></label>
+                                <input type="text" class="form-control" id="courseCost" placeholder="Rs."
+                                    formControlName="courseCost">
+                            </div>
+                            <div class="form-group offset-md-3 col-md-6" style="font-size: 12px;">
+                                <label for="courseCost" style="margin-right: 5px;"><strong>Is this a weekend
+                                        couse?</strong></label>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label" for="radio3">
+                                        <input type="radio" class="form-check-input" id="radio3" name="isWeekendCourse"
+                                            value="yes" isWeekendCourse="weekendCourse"
+                                            formControlName="isWeekendCourse">Yes
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label" for="radio4">
+                                        <input type="radio" class="form-check-input" id="radio4" name="isWeekendCourse"
+                                            value="No" isWeekendCourse="weekendCourse"
+                                            formControlName="isWeekendCourse">No
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div style="border-bottom: 1px solid lightgray;
+            padding: 15px 0px;">
+                    <span style="    font-weight: bold;
+                color: #03c772;
+                font-size: 12px;
+                text-decoration: underline;cursor: pointer;" (click)="addBatchDetails()">ADD ANOTHER COURSE DATE</span>
+                </div>
+
+                <div class="form-group col-md-12" style="padding: 5px 0px;">
+                    <label for="exampleFormControlTextarea1"><strong>COURSE DETAILS</strong></label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                        formControlName="courseComments"></textarea>
+                </div>
+
+            </form>
+            <div>
+                <button type="button" class="btn btn-primary">SKIP</button>
+                <button type="button" class="btn btn-danger ml-5" (click)="goToMainPage()">BACK</button>
+                <button type="button" class="btn btn-success" style="float: right;" (click)="onSubmit()">SAVE &
+                    PUBLISH</button>
+            </div>
+
+            <div class="alert alert-success alert-dismissible fade show mt-3" *ngIf="submitted">
+                <button type="button" class="close" data-dismiss="alert" (click)="closeAlert()">&times;</button>
+                Details are submitted successfully.
+            </div>
+            <p *ngIf="submitted">submitted details: {{addCourseDetails.value | json}}</p>
+        </div>
+        <div class="col-md-6" style="padding-right: 0px;">
+            <img src="../../assets/images/bg_1.png" alt="tropogoBanner" style="width: 100%;
+            background: whitesmoke;height: 100%">
+        </div>
+    </div>
+</div>

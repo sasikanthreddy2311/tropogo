@@ -1,0 +1,96 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6" style="padding: 2% 10%;">
+            <h4 style="font-weight: 900;">Add some details of your training institute.</h4>
+            <p style="font-size: 15px;
+            font-weight: 600;
+            padding: 10px 0px 0px 0px;">INSTITUTE LOGO</p>
+            <img src="../../assets/images/ic_logoiid.png" alt="" style="width: 20%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-align: center;">
+
+            <div>
+                <div class="form-group mt-4" style="font-size: 11px;">
+                    <label for="exampleInputEmail1"><strong>NAME OF THE INSTITUTE</strong></label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Indian institute of Drones.">
+                </div>
+
+                <div class="form-group mt-4" style="font-size: 11px;">
+                    <div style="border-bottom: 1px solid lightgray;">
+                        <label for="exampleInputEmail1"><strong>INSTITUTE BROCHURE (Optional)</strong></label>
+                        <label for="file-upload1" class="custom-file-upload1">
+                            <img src="../../assets/images/ic_upload.png" alt="" style="margin-bottom: 5px;"><span style="font-weight: bold;
+                        color: #147df6;font-size: 10px;">UPLOAD</span>
+                        </label>
+                        <input id="file-upload1" name="IBUpload" type="file" accept=".pdf"
+                            (change)="fileChangeEventForIB($event)" multiple />
+                    </div>
+
+                    <div *ngIf="brochureFiles.length > 0">
+                        <div *ngFor="let item of brochureFiles"
+                            style="border-bottom: 1px solid lightgray;padding: 5px 0px;">
+                            <span>{{item.name}}</span>
+                            <span style="float: right;"><img src="../../assets/images/ic_delete.png" alt=""
+                                    (click)="removeBrochureIB(item)"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group mt-4" style="font-size: 11px;">
+                    <div style="border-bottom: 1px solid lightgray;">
+                        <label for="exampleInputEmail2"><strong>CERTIFICATIONS (Optional)</strong></label>
+                        <label for="file-upload2" class="custom-file-upload2">
+                            <img src="../../assets/images/ic_upload.png" alt="" style="margin-bottom: 5px;"><span style="font-weight: bold;
+                        color: #147df6;font-size: 10px;">UPLOAD</span>
+                        </label>
+                        <input id="file-upload2" name="CertUpload" type="file" accept=".pdf"
+                            (change)="fileChangeEventForCert($event)" multiple />
+                    </div>
+
+                    <div *ngFor="let itemCert of certFiles"
+                        style="border-bottom: 1px solid lightgray;padding: 5px 0px;">
+                        <span>{{itemCert.name}}</span>
+                        <span style="float: right;"><img src="../../assets/images/ic_delete.png" alt=""
+                                (click)="removeBrochureForCert(itemCert)"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group mt-4" style="font-size: 11px;">
+                    <div style="border-bottom: 1px solid lightgray;" [ngStyle]="{color: validationColor}">
+                        <label for="exampleInputEmail3"><strong>INSTITUTE/ COURSE GALLERY </strong></label>
+                        <label for="file-upload3" class="custom-file-upload3">
+                            <img src="../../assets/images/ic_upload.png" alt="" style="margin-bottom: 5px;"><span style="font-weight: bold;
+                        color: #147df6;font-size: 10px;">UPLOAD</span>
+                        </label>
+                        <input id="file-upload3" name="GalleryUpload" type="file" accept=".jpg, .png,"
+                            (change)="fileChangeEventForGallery($event)" multiple />
+                    </div>
+
+                    <div *ngFor="let itemGallery of galleryFiles"
+                        style="border-bottom: 1px solid lightgray;padding: 5px 0px;">
+                        <span>{{itemGallery.name}}</span>
+                        <span style="float: right;"><img src="../../assets/images/ic_delete.png" alt=""
+                                (click)="removeBrochureForGallery(itemGallery)"></span>
+                    </div>
+
+                    <div class="alert alert-danger alert-dismissible fade show mt-3" *ngIf="showValidation">
+                        <button type="button" class="close" data-dismiss="alert" (click)="closeAlert()">&times;</button>
+                        <img src="../../assets/images/ic_info.png" alt=""> Fill in the requested information to proceed..
+                    </div>
+
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-primary" style="background: #03c772; float: right;"
+                        (click)="submitDetails()">Next</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" style="padding-right: 0px;">
+            <img src="../../assets/images/bg_1.png" alt="tropogoBanner" class="img-responsive" style="width: 100%;
+            background: whitesmoke;height: 100%;">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload1 {
+    padding: 0px 5px;
+    cursor: pointer;
+    float: right;
+}
+.custom-file-upload2 {
+    padding: 0px 5px;
+    cursor: pointer;
+    float: right;
+}
+.custom-file-upload3 {
+    padding: 0px 5px;
+    cursor: pointer;
+    float: right;
+}
